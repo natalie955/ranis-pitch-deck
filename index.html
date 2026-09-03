@@ -1412,11 +1412,118 @@
 
     .section-title .accent, .cta-headline .accent { color: var(--blue); }
 
-    /* clear the fixed nav */
-    #hero { padding-top: 96px; }
-    section[id] { scroll-margin-top: 88px; }
+    /* ── Two-column prose table (What to Prepare) ── */
+    .days-card-scroll { overflow-x: auto; }
 
-    .section-title .accent, .cta-headline .accent { color: var(--blue); }
+    .days-table.prose-table { table-layout: fixed; min-width: 520px; }
+    .days-table.prose-table th:last-child { text-align: left; }
+
+    .days-table.prose-table td {
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+    .days-table.prose-table td:first-child {
+      width: 34%;
+      color: var(--white);
+      font-weight: 600;
+      white-space: normal;
+      padding-right: 24px;
+    }
+    .days-table.prose-table td:last-child {
+      width: 66%;
+      text-align: left;
+      color: var(--grey);
+      font-weight: 400;
+      white-space: normal;
+    }
+
+    @media (max-width: 640px) {
+      .days-table.prose-table td { padding: 12px 14px; font-size: 13px; }
+      .days-table.prose-table td:first-child { padding-right: 14px; }
+    }
+
+    /* ── Recommendation stack ── */
+    .rec-list { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; }
+
+    .rec {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .rec.priority {
+      border-color: var(--border-blue);
+      background: linear-gradient(180deg, rgba(59,130,246,0.10), rgba(59,130,246,0.02));
+    }
+
+    .rec-num {
+      flex-shrink: 0;
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800;
+      background: rgba(255,255,255,0.05);
+      color: var(--grey);
+      border: 1px solid var(--border);
+    }
+    .rec.priority .rec-num { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+    .rec-body { flex: 1; min-width: 0; }
+
+    .rec-head {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+      margin-bottom: 8px;
+    }
+    .rec-head h3 { font-size: 16.5px; font-weight: 700; color: var(--white); letter-spacing: -0.01em; }
+    .rec-body p { font-size: 14px; color: var(--grey); line-height: 1.65; }
+    .rec-body p + p { margin-top: 10px; }
+
+    .rec-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 100px;
+      border: 1px solid var(--border); color: var(--grey);
+      white-space: nowrap;
+    }
+    .rec-tag.win { border-color: var(--border-blue); color: var(--blue); background: var(--blue-dim); }
+
+    @media (max-width: 620px) {
+      .rec { flex-direction: column; gap: 14px; padding: 20px; }
+    }
+
+    /* ── Fit / not-fit columns ── */
+    .fit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .fit-col {
+      padding: 24px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .fit-col.yes { border-color: var(--border-blue); }
+    .fit-col h4 {
+      font-size: 13px; font-weight: 700; color: var(--white);
+      letter-spacing: 0.04em; text-transform: uppercase;
+      margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+    }
+    .fit-col.yes h4 { color: var(--blue); }
+    .fit-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .fit-col li {
+      font-size: 13.5px; color: var(--grey); line-height: 1.55;
+      padding-left: 20px; position: relative;
+    }
+    .fit-col li::before {
+      content: '';
+      position: absolute; left: 0; top: 8px;
+      width: 6px; height: 6px; border-radius: 2px;
+      background: var(--grey-dim);
+    }
+    .fit-col.yes li::before { background: var(--blue); }
 
     /* clear the fixed nav */
     #hero { padding-top: 96px; }
@@ -1434,6 +1541,7 @@
     <li><a href="#about">Who We Are</a></li>
     <li><a href="#services">What We Do</a></li>
     <li><a href="#observed">What We Noticed</a></li>
+    <li><a href="#recommendations">Recommendations</a></li>
     <li><a href="#approach">How We Work</a></li>
     <li><a href="#prepare">Before We Meet</a></li>
     <li><a href="#faq">FAQ</a></li>
@@ -1527,7 +1635,7 @@
           <div class="approach-phase-num"><i data-lucide="map-pin" style="width:16px;height:16px;"></i></div>
           <div class="approach-phase-text">
             <strong>Johannesburg based</strong>
-            <span>We&rsquo;re local, so site visits to Lenasia or any of the branches cost you nothing and don&rsquo;t need to wait for a travel budget</span>
+            <span>We&rsquo;re local, so once things move past the first call, site visits to Lenasia or any of the branches cost you nothing and don&rsquo;t wait on a travel budget</span>
           </div>
         </div>
         <div class="approach-connector"></div>
@@ -1674,6 +1782,139 @@
 
 <div class="divider"></div>
 
+
+<!-- ══ RECOMMENDATIONS ══ -->
+<section id="recommendations" class="section">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;">
+      <div class="label" style="margin-bottom:12px;">Recommendations</div>
+      <h2 class="section-title">Where We&rsquo;d Start</h2>
+      <p class="section-subtitle" style="margin:16px auto 0;">If you asked us today, before any audit, this is the order we&rsquo;d tackle it in &mdash; cheapest and fastest payback first, foundations underneath, and the clever stuff last. The audit will almost certainly reshuffle this. We&rsquo;d rather show you our thinking now than be vague about it.</p>
+    </div>
+
+    <div class="rec-list">
+
+      <div class="rec priority fade-in fade-in-delay-1">
+        <div class="rec-num">1</div>
+        <div class="rec-body">
+          <div class="rec-head">
+            <h3>Repeat-purchase reminders</h3>
+            <span class="rec-tag win">Quickest payback</span>
+          </div>
+          <p>Mixtures, teas, oils and salts get used up on a fairly predictable cycle, which makes them close to ideal for automated reminders. A message at roughly the right moment &mdash; WhatsApp or email, in the customer&rsquo;s language and easy to opt out of &mdash; turns a one-off buyer into a repeat one without anyone lifting the phone.</p>
+          <p>We put this first because it is the smallest amount of work on this page and the fastest to show a number. It touches nothing else, so it can run while everything below is still being decided, and if it doesn&rsquo;t perform you&rsquo;ve lost very little finding out.</p>
+        </div>
+      </div>
+
+      <div class="rec priority fade-in fade-in-delay-2">
+        <div class="rec-num">2</div>
+        <div class="rec-body">
+          <div class="rec-head">
+            <h3>A trade ordering portal for External Sales</h3>
+            <span class="rec-tag win">Biggest time saving</span>
+          </div>
+          <p>Your enquiry came from External Sales, and there&rsquo;s no trade or bulk ordering section on the website &mdash; which usually means wholesale orders arrive by phone, WhatsApp and email, get written down, then get typed into a system a second time. That is slow, it&rsquo;s where quantity errors come from, and it caps how many accounts one person can carry.</p>
+          <p>A portal lets trade customers place and track their own orders against their own pricing, and the order lands ready to fulfil rather than needing re-keying. The first thing we&rsquo;d check is whether Shopify&rsquo;s own B2B features cover enough of it, because using what you already pay for beats building something custom.</p>
+        </div>
+      </div>
+
+      <div class="rec priority fade-in fade-in-delay-3">
+        <div class="rec-num">3</div>
+        <div class="rec-body">
+          <div class="rec-head">
+            <h3>ClickUp as the operating system for branches and franchising</h3>
+            <span class="rec-tag win">Foundation</span>
+          </div>
+          <p>You&rsquo;re taking franchise applications, which means how a Rani&rsquo;s store runs has to become something you can hand to a stranger rather than something learned by standing next to someone. That is the highest-leverage work available to you, and it is process work before it is software.</p>
+          <p>ClickUp is where we&rsquo;d put it &mdash; franchise onboarding as a repeatable template that fires the same tasks in the same order every time, branch checklists, procurement, and one place where head office can see all seven stores without ringing round. More detail on that below, including what it wouldn&rsquo;t do.</p>
+        </div>
+      </div>
+
+      <div class="rec fade-in fade-in-delay-3">
+        <div class="rec-num">4</div>
+        <div class="rec-body">
+          <div class="rec-head">
+            <h3>One customer record across all three channels</h3>
+            <span class="rec-tag">Foundation</span>
+          </div>
+          <p>Someone who buys in Lenasia on Saturday, orders online on Tuesday and phones the sales desk next month is currently three separate people as far as your systems are concerned. Joining those up is what tells you who your best customers actually are &mdash; and it&rsquo;s the thing everything further down this list quietly depends on.</p>
+        </div>
+      </div>
+
+      <div class="rec fade-in fade-in-delay-4">
+        <div class="rec-num">5</div>
+        <div class="rec-body">
+          <div class="rec-head">
+            <h3>One dashboard instead of a month-end assembly job</h3>
+            <span class="rec-tag">Visibility</span>
+          </div>
+          <p>Seven branches plus online plus trade usually means the consolidated picture arrives days late and is built by hand. Pulling those sources into one live view means decisions get made on this week&rsquo;s numbers rather than last month&rsquo;s &mdash; which matters more with every store you add.</p>
+        </div>
+      </div>
+
+      <div class="rec fade-in fade-in-delay-4">
+        <div class="rec-num">6</div>
+        <div class="rec-body">
+          <div class="rec-head">
+            <h3>A WhatsApp assistant &mdash; last, deliberately</h3>
+            <span class="rec-tag">Later, on purpose</span>
+          </div>
+          <p>An AI assistant that answers product questions, checks availability and takes repeat orders around the clock is genuinely useful for a business like yours. But it can only ever be as accurate as the data sitting behind it, and an assistant that confidently tells a customer something untrue is worse than no assistant at all.</p>
+          <p>So this comes after the records are joined up and the stock picture is trustworthy &mdash; not because it&rsquo;s hard to build, but because building it first is how these projects get a bad name. Plenty of agencies would sell it to you today. We&rsquo;d rather sell it to you when it will work.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="quote-note fade-in fade-in-delay-4" style="margin-top:32px;">
+      <strong>Read this as a hypothesis, not a plan.</strong> Every item above is inferred from your website and a search &mdash; we haven&rsquo;t seen your stock system, your margins, or how your team actually works. The audit exists to test this list, and we&rsquo;d expect it to change: something here will turn out to be already solved, and something we haven&rsquo;t listed will turn out to matter more than all six. What we won&rsquo;t do is build any of it because it was on a slide.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ CLICKUP FIT ══ -->
+<section id="clickup" class="section">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;">
+      <div class="label" style="margin-bottom:12px;">The Fit</div>
+      <h2 class="section-title">Why We&rsquo;d Point You at <span class="accent">ClickUp</span></h2>
+      <p class="section-subtitle" style="margin:16px auto 0;">Recurring work, across multiple locations, that head office needs to see without asking. That is the exact shape of problem ClickUp is good at &mdash; and the exact shape of a seven-branch retailer with a franchise programme.</p>
+    </div>
+
+    <div class="fit-grid fade-in fade-in-delay-1">
+      <div class="fit-col yes">
+        <h4><i data-lucide="check-circle-2" style="width:15px;height:15px;"></i> What it would hold</h4>
+        <ul>
+          <li><strong style="color:#fff;font-weight:600;">Franchise onboarding as a template</strong> &mdash; every new store fires the same tasks, in the same order, with the same deadlines, so opening the twelfth is as controlled as opening the eighth</li>
+          <li><strong style="color:#fff;font-weight:600;">Branch routines</strong> &mdash; opening and closing checklists, stock counts, promotions and merchandising, all visible from head office without a phone call</li>
+          <li><strong style="color:#fff;font-weight:600;">Procurement and supplier orders</strong> &mdash; a pipeline with stages and owners rather than a chain of messages</li>
+          <li><strong style="color:#fff;font-weight:600;">Product launches</strong> &mdash; one plan pushed across all seven stores, with proof each one actually did it</li>
+          <li><strong style="color:#fff;font-weight:600;">Staff onboarding and training</strong> &mdash; particularly useful when a franchisee needs to train people you&rsquo;ve never met</li>
+          <li><strong style="color:#fff;font-weight:600;">Dashboards</strong> &mdash; what&rsquo;s late, what&rsquo;s blocked, which branch is behind, in a live view rather than a report someone assembles</li>
+        </ul>
+      </div>
+      <div class="fit-col">
+        <h4><i data-lucide="x-circle" style="width:15px;height:15px;"></i> What it would not replace</h4>
+        <ul>
+          <li><strong style="color:#fff;font-weight:600;">Your Shopify store</strong> &mdash; ClickUp is not an e-commerce platform and shouldn&rsquo;t pretend to be. Shopify stays where it is; we connect them</li>
+          <li><strong style="color:#fff;font-weight:600;">Your point-of-sale</strong> &mdash; tills keep doing what tills do</li>
+          <li><strong style="color:#fff;font-weight:600;">Your accounting package</strong> &mdash; ClickUp is not a general ledger and using it as one ends badly</li>
+          <li><strong style="color:#fff;font-weight:600;">Your stock system of record</strong> &mdash; ClickUp can trigger and track the work around stock, but it should not be the place inventory numbers actually live</li>
+          <li><strong style="color:#fff;font-weight:600;">Customer conversations</strong> &mdash; WhatsApp with customers stays customer-facing; ClickUp is the internal side</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quote-note fade-in fade-in-delay-2" style="margin-top:32px;">
+      <strong>Two things we should declare.</strong> First, we&rsquo;re a ClickUp partner &mdash; it&rsquo;s the platform we implement most, and we can supply licences directly at partner pricing, which is usually better than buying alone. That also means we have something to gain when we recommend it, and you should weigh what we say accordingly. Second, and precisely because of that: if the audit says your real problem is a stock system, or a better till integration, or simply three people doing a job that should be one person&rsquo;s, we&rsquo;ll tell you that instead. A ClickUp implementation on top of an unsolved process problem is an expensive way to be disappointed, and we&rsquo;d rather lose the licence revenue than sell you one.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ══ APPROACH ══ -->
 <section id="approach" class="section">
   <div class="container">
@@ -1808,7 +2049,7 @@
     <div class="fade-in" style="text-align:center;">
       <div class="label" style="margin-bottom:12px;">Before We Meet</div>
       <h2 class="section-title">What to Prepare</h2>
-      <p class="section-subtitle" style="margin:16px auto 0;">You asked what you should have ready. Honestly? Nothing is mandatory &mdash; if you&rsquo;d rather just talk, we&rsquo;ll bring the questions. But if you want the first meeting to be worth more than an introduction, these six things make the difference.</p>
+      <p class="section-subtitle" style="margin:16px auto 0;">You asked what you should have ready. Honestly? Nothing is mandatory &mdash; if you&rsquo;d rather just talk, we&rsquo;ll bring the questions. But the first call is online and about an hour long, so anything below that you can have open on screen makes that hour go a good deal further.</p>
     </div>
 
     <div class="days-card fade-in fade-in-delay-1">
@@ -1816,7 +2057,8 @@
         <div class="days-card-title">Useful to have ready</div>
         <span class="badge badge-outline">All optional</span>
       </div>
-      <table class="days-table">
+      <div class="days-card-scroll">
+      <table class="days-table prose-table">
         <thead>
           <tr>
             <th>What to Bring</th>
@@ -1850,6 +2092,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
 
     <div class="quote-note fade-in fade-in-delay-2" style="margin-top:24px;">
@@ -1977,21 +2220,21 @@
     <div class="fade-in">
       <div class="label" style="margin-bottom:16px;text-align:center;">Next Steps</div>
       <h2 class="cta-headline">Let&rsquo;s Get in a Room</h2>
-      <p class="cta-sub">You asked about our availability &mdash; we&rsquo;re flexible, and happy to come to Blackwood Road rather than ask you to travel. We&rsquo;re based in Johannesburg, so it&rsquo;s a short drive and there&rsquo;s no charge for it, whether or not anything comes of the meeting. Send us two or three times that suit you and we&rsquo;ll work around them.</p>
+      <p class="cta-sub">You asked about our availability &mdash; we&rsquo;re flexible. Let&rsquo;s start with a short online call rather than taking half a day out of anyone&rsquo;s week: it&rsquo;s easier to schedule, and an hour on a video call is enough to work out whether there&rsquo;s something worth pursuing. If there is, the next step is us coming to Lenasia in person, at no charge. Send two or three times that suit you and we&rsquo;ll work around them.</p>
 
       <div class="slot-grid">
         <!-- Natalie: swap these for specific dates once you've checked the diary -->
         <div class="slot-card fade-in fade-in-delay-1">
-          <div class="slot-icon"><i data-lucide="map-pin" style="width:20px;height:20px;"></i></div>
-          <div class="slot-day">In Lenasia</div>
-          <div class="slot-time">We come to you</div>
-          <div class="slot-date">7 Blackwood Road, no charge</div>
+          <div class="slot-icon"><i data-lucide="video" style="width:20px;height:20px;"></i></div>
+          <div class="slot-day">Online first</div>
+          <div class="slot-time">About an hour</div>
+          <div class="slot-date">Teams, Meet or Zoom &mdash; your call</div>
         </div>
         <div class="slot-card fade-in fade-in-delay-2">
-          <div class="slot-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
-          <div class="slot-day">About an hour</div>
-          <div class="slot-time">Weekdays</div>
-          <div class="slot-date">Mornings suit us best</div>
+          <div class="slot-icon"><i data-lucide="map-pin" style="width:20px;height:20px;"></i></div>
+          <div class="slot-day">Then in person</div>
+          <div class="slot-time">If it&rsquo;s worth it</div>
+          <div class="slot-date">We come to Lenasia, no charge</div>
         </div>
         <div class="slot-card fade-in fade-in-delay-3">
           <div class="slot-icon"><i data-lucide="file-check" style="width:20px;height:20px;"></i></div>
