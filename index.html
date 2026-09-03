@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Ruppell × Rani's Herbalist — Capability Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #111111;
+      --bg-card-2: #161616;
+      --blue: #3b82f6;
+      --blue-dim: rgba(59,130,246,0.12);
+      --blue-glow: rgba(59,130,246,0.35);
+      --white: #ffffff;
+      --grey: #9ca3af;
+      --grey-dim: #374151;
+      --border: rgba(255,255,255,0.07);
+      --border-blue: rgba(59,130,246,0.4);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Utilities ── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section-sm { padding: 72px 0; }
+
+    .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--white);
+    }
+
+    .section-subtitle {
+      font-size: 17px;
+      color: var(--grey);
+      max-width: 600px;
+      margin-top: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .badge-outline {
+      border: 1px solid var(--border-blue);
+      color: var(--blue);
+      background: var(--blue-dim);
+    }
+
+    .badge-blue {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    /* ── Fade-in animation ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+    .fade-in-delay-5 { transition-delay: 0.5s; }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #2563eb;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(59,130,246,0.4);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border-blue);
+    }
+    .btn-ghost:hover {
+      background: var(--blue-dim);
+      transform: translateY(-1px);
+    }
+
+    /* ══════════════════════════
+       NAV
+    ══════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--grey);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    @media (max-width: 820px) {
+      .nav-links { display: none; }
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .nav-logo img.wordmark { height: 30px; }
+
+    /* ══════════════════════════
+       HERO
+    ══════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 60% 40%, rgba(59,130,246,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(59,130,246,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      font-size: 13px;
+      color: var(--grey);
+    }
+
+    .hero-meta-sep {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--grey-dim);
+    }
+
+    .hero-headline {
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .hero-headline .accent { color: var(--blue); }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 19px);
+      color: var(--grey);
+      max-width: 600px;
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+
+    /* ── Hero stat strip ── */
+    .hero-stats {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .hero-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 20px;
+      min-width: 140px;
+    }
+
+    .hero-stat-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .hero-stat-value .unit {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--grey);
+      margin-left: 3px;
+    }
+
+    .hero-stat-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-top: 4px;
+    }
+
+    /* ══════════════════════════
+       HERO LOGO LOCKUP
+    ══════════════════════════ */
+    .hero-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .hero-lockup-side {
+      padding: 18px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .hero-lockup-from { border-right: 1px solid var(--border); }
+
+    .lockup-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .lockup-from-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-lockup-arrow {
+      padding: 0 16px;
+      color: var(--grey-dim);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .lockup-for-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .hero-lockup { flex-direction: column; align-items: stretch; }
+      .hero-lockup-from { border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-lockup-arrow { display: none; }
+    }
+
+    /* ══════════════════════════
+       PARTNER WORDMARK (Rani's Herbalist)
+       (placeholder — swap for artwork when supplied)
+    ══════════════════════════ */
+    .partner-wordmark {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .partner-wordmark .accent { color: var(--blue); }
+
+    .partner-wordmark-sm {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+      opacity: 0.85;
+      white-space: nowrap;
+    }
+
+    .partner-wordmark-sm .accent { color: var(--blue); }
+
+    .partner-wordmark-nav {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    /* ══════════════════════════
+       THE BRIEF
+    ══════════════════════════ */
+    .brief-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .brief-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .brief-card:hover {
+      border-color: var(--border-blue);
+      transform: translateY(-2px);
+    }
+
+    .brief-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--blue-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      color: var(--blue);
+    }
+
+    .brief-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .brief-card p {
+      font-size: 13.5px;
+      color: var(--grey);
+      line-height: 1.55;
+    }
+
+    .brief-confirm {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 32px;
+      padding: 12px 18px;
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #4ade80;
+    }
+
+    /* ══════════════════════════
+       APPROACH
+    ══════════════════════════ */
+    #approach { background: var(--bg-card-2); }
+
+    #approach .approach-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      #approach .approach-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    .approach-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .approach-phase {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+
+    .approach-phase:hover { border-color: var(--border-blue); }
+
+    .approach-phase-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .approach-phase-text strong {
+      font-size: 14.5px;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .approach-phase-text span {
+      font-size: 13px;
+      color: var(--grey);
+      line-height: 1.5;
+    }
+
+    .approach-phase-days {
+      margin-left: auto;
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: var(--blue-dim);
+      border: 1px solid var(--border-blue);
+      border-radius: 100px;
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
+
+    .approach-connector {
+      width: 2px;
+      height: 14px;
+      background: linear-gradient(to bottom, var(--blue-dim), transparent);
+      margin-left: 28px;
+    }
+
+    /* ══════════════════════════
+       DAYS TABLE
+    ══════════════════════════ */
+    .days-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 48px;
+    }
+
+    .days-card-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .days-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .days-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .days-table th {
+      padding: 10px 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-align: left;
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .days-table th:last-child { text-align: right; }
+
+    .days-table td {
+      padding: 14px 20px;
+      font-size: 13.5px;
+      color: var(--grey);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .days-table td:first-child {
+      color: var(--white);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .days-table td:last-child {
+      text-align: right;
+      color: var(--white);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .days-table tr.total-row td {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border-top: 1px solid var(--border-blue);
+      border-bottom: none;
+      background: var(--blue-dim);
+      font-weight: 800;
+    }
+
+    .days-table tr.total-row td:first-child {
+      color: var(--white);
+      font-size: 14px;
+    }
+
+    .days-table tr.total-row td:last-child {
+      color: var(--blue);
+      font-size: 16px;
+    }
+
+    .days-table th:nth-child(3), .days-table td:nth-child(3) {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .days-table th:nth-child(2), .days-table td:nth-child(2) { display: none; }
+    }
+
+    /* ══════════════════════════
+       PRICING / INVESTMENT
+    ══════════════════════════ */
+    .quote-note {
+      margin-top: 32px;
+      padding: 18px 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      font-size: 13.5px;
+      color: var(--grey);
+      line-height: 1.65;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .quote-note strong { color: var(--white); }
+
+    /* ── Estimate banner ── */
+    .estimate-banner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 860px;
+      margin: 40px auto 0;
+      padding: 16px 22px;
+      background: var(--blue-dim);
+      border: 1px solid var(--border-blue);
+      border-radius: 12px;
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.55;
+    }
+
+    .estimate-banner i { color: var(--blue); }
+    .estimate-banner strong { color: var(--white); }
+
+    /* ── Rates card ── */
+    .rates-card {
+      max-width: 860px;
+      margin: 24px auto 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 30px;
+    }
+
+    .rates-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 22px;
+    }
+
+    .rates-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 760px) {
+      .rates-grid { grid-template-columns: 1fr; gap: 22px; }
+    }
+
+    .rate-item + .rate-item {
+      border-left: 1px solid var(--border);
+      padding-left: 24px;
+    }
+
+    @media (max-width: 760px) {
+      .rate-item + .rate-item {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--border);
+        padding-top: 22px;
+      }
+    }
+
+    .rate-value {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1.1;
+    }
+
+    .rate-value span {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--grey);
+    }
+
+    .rate-label {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--white);
+      margin: 8px 0 6px;
+    }
+
+    .rate-item p {
+      font-size: 12.5px;
+      color: var(--grey);
+      line-height: 1.55;
+    }
+
+    /* ── Ad-hoc rate note ── */
+    .rate-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      max-width: 860px;
+      margin: 20px auto 0;
+      padding: 22px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .rate-note-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--blue-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+
+    .rate-note strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 5px;
+    }
+
+    .rate-note p {
+      font-size: 13.5px;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════
+       SUPPORT
+    ══════════════════════════ */
+    .support-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .support-cards { grid-template-columns: 1fr; }
+    }
+
+    .support-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .support-card:hover {
+      border-color: var(--border-blue);
+      transform: translateY(-2px);
+    }
+
+    .support-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--blue-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      color: var(--blue);
+    }
+
+    .support-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .support-card p {
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════
+       OWNERSHIP
+    ══════════════════════════ */
+    .ownership-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .ownership-cards { grid-template-columns: 1fr; }
+    }
+
+    .ownership-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px 28px;
+      text-align: center;
+    }
+
+    .ownership-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: var(--blue-dim);
+      border: 1px solid var(--border-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: var(--blue);
+    }
+
+    .ownership-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    /* ══════════════════════════
+       TECH / CAPABILITIES
+    ══════════════════════════ */
+    #tech { background: var(--bg-card-2); }
+
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .tech-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .tech-pill:hover {
+      border-color: var(--border-blue);
+      transform: translateY(-2px);
+    }
+
+    .tech-pill-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--blue-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tech-note {
+      margin-top: 32px;
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 8px 8px 0;
+      font-size: 13px;
+      color: var(--grey);
+    }
+
+    /* ══════════════════════════
+       TIMELINE
+    ══════════════════════════ */
+    .timeline-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .timeline-track {
+      position: relative;
+      display: flex;
+      gap: 0;
+      margin-top: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .timeline-track::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--blue-dim) 100%);
+    }
+
+    .timeline-step {
+      flex: 1;
+      min-width: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--blue);
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    .timeline-step:first-child .timeline-dot {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .timeline-content {
+      margin-top: 14px;
+      text-align: center;
+      padding: 0 8px;
+    }
+
+    .timeline-week {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .timeline-desc {
+      font-size: 13px;
+      color: var(--grey);
+      line-height: 1.4;
+    }
+
+    /* ══════════════════════════
+       FAQ
+    ══════════════════════════ */
+    #faq { background: var(--bg-card-2); }
+
+    .faq-list {
+      max-width: 780px;
+      margin: 48px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+      gap: 16px;
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: var(--blue-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      transition: transform 0.25s ease;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.open .faq-answer { max-height: 320px; }
+
+    .faq-answer-inner {
+      padding: 0 24px 22px;
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.65;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+    }
+
+    /* ══════════════════════════
+       MEETING SLOTS / CTA
+    ══════════════════════════ */
+    #cta {
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(59,130,246,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner { position: relative; z-index: 1; }
+
+    .cta-headline {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .cta-sub {
+      font-size: 17px;
+      color: var(--grey);
+      margin-bottom: 48px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .slot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      max-width: 820px;
+      margin: 0 auto 32px;
+    }
+
+    .slot-card {
+      display: block;
+      text-decoration: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 20px;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .slot-card:hover {
+      border-color: var(--border-blue);
+      background: linear-gradient(135deg, #111111 0%, #0f1829 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(59,130,246,0.15);
+    }
+
+    .slot-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--blue-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      margin: 0 auto 14px;
+    }
+
+    .slot-day {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .slot-time {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .slot-date {
+      font-size: 12px;
+      color: var(--grey);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    /* ══════════════════════════
+       FOOTER
+    ══════════════════════════ */
+    footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      text-align: center;
+    }
+
+    .footer-brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      width: 100%;
+    }
+
+    .footer-brand-sep {
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+    }
+
+    .footer-brand-for {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .footer-brand-for-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-contact {
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.8;
+    }
+
+    .footer-contact a {
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-contact a:hover { color: var(--white); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--grey-dim);
+    }
+
+    /* ══════════════════════════
+       SCROLLBAR
+    ══════════════════════════ */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--grey-dim); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+
+    /* ══════════════════════════
+       DOCUMENT SWITCHER
+    ══════════════════════════ */
+    .docbar {
+      position: fixed;
+      top: 63px; left: 0; right: 0;
+      z-index: 99;
+      background: rgba(14,14,14,0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .docbar::-webkit-scrollbar { display: none; }
+
+    .docbar-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey-dim);
+      margin-right: 6px;
+      white-space: nowrap;
+    }
+
+    .docbar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 15px;
+      border-radius: 100px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--grey);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+      transition: color .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .docbar a:hover { color: var(--white); border-color: var(--border-blue); }
+
+    .docbar a.current {
+      background: var(--blue-dim);
+      color: var(--blue);
+      border-color: var(--border-blue);
+    }
+
+    .docbar a .dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--grey-dim);
+      flex-shrink: 0;
+    }
+    .docbar a.current .dot { background: var(--blue); }
+
+    .docbar a .meta {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--grey-dim);
+    }
+    .docbar a.current .meta { color: rgba(59,130,246,0.75); }
+
+    @media (max-width: 820px) {
+      .docbar { justify-content: flex-start; padding: 8px 16px; }
+      .docbar-label { display: none; }
+    }
+
+
+    /* ══════════════════════════
+       VALUE CHAIN
+    ══════════════════════════ */
+    .chain {
+      display: flex;
+      align-items: stretch;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 48px;
+    }
+
+    .chain-link {
+      flex: 1 1 110px;
+      padding: 20px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      text-align: center;
+    }
+
+    .chain-link .chain-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--grey);
+      letter-spacing: 0.01em;
+    }
+
+    .chain-link .chain-owner {
+      display: block;
+      margin-top: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-dim);
+    }
+
+    .chain-link.ours {
+      border-color: var(--border-blue);
+      background: linear-gradient(180deg, rgba(59,130,246,0.14), rgba(59,130,246,0.04));
+      box-shadow: 0 0 40px rgba(59,130,246,0.12);
+    }
+    .chain-link.ours .chain-name { color: var(--white); }
+    .chain-link.ours .chain-owner { color: var(--blue); }
+
+    .chain-caption {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--grey);
+    }
+    .chain-caption span { display: inline-flex; align-items: center; gap: 8px; }
+    .chain-caption i.swatch {
+      width: 10px; height: 10px; border-radius: 3px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      display: inline-block;
+    }
+    .chain-caption i.swatch.ours { background: var(--blue); border-color: var(--blue); }
+
+    @media (max-width: 720px) {
+      .chain-link { flex: 1 1 calc(50% - 8px); }
+    }
+
+    .section-title .accent, .cta-headline .accent { color: var(--blue); }
+
+    /* clear the fixed nav */
+    #hero { padding-top: 96px; }
+    section[id] { scroll-margin-top: 88px; }
+
+    .section-title .accent, .cta-headline .accent { color: var(--blue); }
+
+    /* clear the fixed nav */
+    #hero { padding-top: 96px; }
+    section[id] { scroll-margin-top: 88px; }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img class="wordmark" src="https://ruppell.co.za/wp-content/uploads/2025/11/Untitled-design-10-e1762169365729.png" alt="Ruppell" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Who We Are</a></li>
+    <li><a href="#services">What We Do</a></li>
+    <li><a href="#observed">What We Noticed</a></li>
+    <li><a href="#approach">How We Work</a></li>
+    <li><a href="#prepare">Before We Meet</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#cta" style="color:#3b82f6;font-weight:700;">Book the Meeting</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero" class="section">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-meta fade-in">
+        <span class="label">Capability Overview</span>
+        <div class="hero-meta-sep"></div>
+        <span class="hero-meta-item">Confidential</span>
+        <div class="hero-meta-sep"></div>
+        <span class="hero-meta-item">3 September 2026</span>
+        <div class="hero-meta-sep"></div>
+        <span class="hero-meta-item">Operations &middot; Systems &middot; AI</span>
+      </div>
+      <h1 class="hero-headline fade-in fade-in-delay-1">
+        You&rsquo;ve Built the Demand.<br/>Now the Systems Have to <span class="accent">Keep Up.</span>
+      </h1>
+      <p class="hero-sub fade-in fade-in-delay-2">
+        Seven branches across Gauteng, a Shopify store delivering nationwide, an external sales desk and a franchise programme &mdash; four ways of selling that each tend to grow their own way of working. We build the operations, systems and AI that pull them back into one, so the business scales without adding headcount to hold it together.
+      </p>
+
+      <div class="hero-stats fade-in fade-in-delay-3">
+        <div class="hero-stat">
+          <div class="hero-stat-value">30<span class="unit">min</span></div>
+          <div class="hero-stat-label">Free diagnostic session</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">6<span class="unit">services</span></div>
+          <div class="hero-stat-label">Operations, systems and AI</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">100<span class="unit">%</span></div>
+          <div class="hero-stat-label">Systems and data you own</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">0<span class="unit">lock-in</span></div>
+          <div class="hero-stat-label">No platform of ours in the middle</div>
+        </div>
+      </div>
+
+      <!-- Logo lockup -->
+      <div class="hero-lockup fade-in fade-in-delay-4">
+        <div class="hero-lockup-side hero-lockup-from">
+          <div class="lockup-label">Prepared by</div>
+          <div class="lockup-from-brand">
+            <img class="wordmark" src="https://ruppell.co.za/wp-content/uploads/2025/11/Untitled-design-10-e1762169365729.png" alt="Ruppell" style="height:28px;" />
+          </div>
+        </div>
+        <div class="hero-lockup-arrow">&rarr;</div>
+        <div class="hero-lockup-side">
+          <div class="lockup-label">Prepared for <strong style="color:#fff;">Gadi Phukwi, Rani&rsquo;s Herbalist</strong></div>
+          <div class="lockup-for-logo">
+            <!-- Rani's Herbalist wordmark — replace with logo artwork when supplied -->
+            <div class="partner-wordmark">Rani&rsquo;s<span class="accent">&nbsp;Herbalist</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ ABOUT ══ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="approach-inner">
+      <div class="fade-in">
+        <div class="label" style="margin-bottom:12px;">Who We Are</div>
+        <h2 class="section-title">An Automation Agency,<br/>Not a <span class="accent">Software Reseller.</span></h2>
+        <p class="section-subtitle">
+          Ruppell is an AI and automation consultancy based in Johannesburg. We work with established South African businesses that have outgrown the way they run &mdash; where the orders, the stock questions and the follow-ups have quietly become more than the team can hold in their heads.
+        </p>
+        <p class="section-subtitle">
+          We don&rsquo;t sell licences and we don&rsquo;t have a platform of our own to push you onto. We map how the business actually works, redesign the parts that are costing you, then build the automation on tools you own outright. Everything is documented, and your team is trained to run it without us.
+        </p>
+        <p class="section-subtitle">
+          <strong style="color:#fff;">Automate the busywork. Scale without the overhead.</strong>
+        </p>
+      </div>
+      <div class="approach-visual fade-in fade-in-delay-1">
+        <div class="approach-phase">
+          <div class="approach-phase-num"><i data-lucide="map-pin" style="width:16px;height:16px;"></i></div>
+          <div class="approach-phase-text">
+            <strong>Johannesburg based</strong>
+            <span>We&rsquo;re local, so site visits to Lenasia or any of the branches cost you nothing and don&rsquo;t need to wait for a travel budget</span>
+          </div>
+        </div>
+        <div class="approach-connector"></div>
+        <div class="approach-phase">
+          <div class="approach-phase-num"><i data-lucide="store" style="width:16px;height:16px;"></i></div>
+          <div class="approach-phase-text">
+            <strong>Multi-location retail &amp; trade</strong>
+            <span>Businesses selling through branches, online and a sales desk at the same time &mdash; where the same customer arrives three different ways</span>
+          </div>
+        </div>
+        <div class="approach-connector"></div>
+        <div class="approach-phase">
+          <div class="approach-phase-num"><i data-lucide="bot" style="width:16px;height:16px;"></i></div>
+          <div class="approach-phase-text">
+            <strong>Practical AI, not theatre</strong>
+            <span>WhatsApp and voice agents that answer real customer questions and book real orders &mdash; and an honest answer when AI isn&rsquo;t the right tool yet</span>
+          </div>
+        </div>
+        <div class="approach-connector"></div>
+        <div class="approach-phase">
+          <div class="approach-phase-num"><i data-lucide="unlock" style="width:16px;height:16px;"></i></div>
+          <div class="approach-phase-text">
+            <strong>You own everything</strong>
+            <span>Systems in your accounts, data exportable at any time, every workflow written up &mdash; so the next person inherits notes rather than a mystery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ SERVICES ══ -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="fade-in">
+      <div class="label" style="margin-bottom:12px;">What We Do</div>
+      <h2 class="section-title">Six Things, Done Properly</h2>
+      <p class="section-subtitle">You asked what services we offer and where our expertise sits. This is the whole list &mdash; not a menu we&rsquo;d learn on your budget.</p>
+    </div>
+
+    <div class="brief-cards">
+      <div class="brief-card fade-in fade-in-delay-1">
+        <div class="brief-icon"><i data-lucide="scan-search" style="width:22px;height:22px;"></i></div>
+        <h3>Operations &amp; process consulting</h3>
+        <p>Mapping how the business actually runs, branch by branch and desk by desk, then redesigning the parts that leak time or margin. Written SOPs, clear handoffs, and a roadmap ordered by what pays back first.</p>
+      </div>
+      <div class="brief-card fade-in fade-in-delay-2">
+        <div class="brief-icon"><i data-lucide="layout-dashboard" style="width:22px;height:22px;"></i></div>
+        <h3>ClickUp business operating systems</h3>
+        <p>One place where the whole business runs &mdash; orders, tasks, branch checklists, procurement, franchise onboarding &mdash; with automated status flows and live dashboards instead of a WhatsApp group and somebody&rsquo;s spreadsheet.</p>
+      </div>
+      <div class="brief-card fade-in fade-in-delay-3">
+        <div class="brief-icon"><i data-lucide="git-branch" style="width:22px;height:22px;"></i></div>
+        <h3>Workflow automation</h3>
+        <p>Connecting the systems that don&rsquo;t talk to each other &mdash; Shopify, accounting, stock, email, WhatsApp &mdash; using n8n, Make or Zapier, so orders and figures stop being copied by hand from one screen to another.</p>
+      </div>
+      <div class="brief-card fade-in fade-in-delay-4">
+        <div class="brief-icon"><i data-lucide="columns-3" style="width:22px;height:22px;"></i></div>
+        <h3>CRM &amp; sales automation</h3>
+        <p>Every enquiry captured in one pipeline whether it arrived by phone, WhatsApp, Facebook or the website, with automatic follow-up that stops the moment a person replies &mdash; so nothing goes cold because someone was busy on the shop floor.</p>
+      </div>
+      <div class="brief-card fade-in fade-in-delay-5">
+        <div class="brief-icon"><i data-lucide="bot" style="width:22px;height:22px;"></i></div>
+        <h3>AI agents &amp; chatbots</h3>
+        <p>WhatsApp and website assistants that answer product questions, check availability, take repeat orders and book callbacks around the clock &mdash; plus voice agents that handle the calls nobody gets to at month end.</p>
+      </div>
+      <div class="brief-card fade-in fade-in-delay-5">
+        <div class="brief-icon"><i data-lucide="code-2" style="width:22px;height:22px;"></i></div>
+        <h3>Portals &amp; custom builds</h3>
+        <p>Self-service portals for trade and franchise customers to place their own orders and track them, plus bespoke tools where nothing off the shelf fits &mdash; quoting engines, ordering apps, stock request systems.</p>
+      </div>
+    </div>
+
+    <div class="brief-confirm fade-in">
+      <i data-lucide="check-circle-2" style="width:17px;height:17px;"></i>
+      Most engagements use two or three of these, never all six &mdash; which of them applies is exactly what the first conversation is for.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ WHAT WE NOTICED ══ -->
+<section id="observed" class="section">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;">
+      <div class="label" style="margin-bottom:12px;">What We Noticed</div>
+      <h2 class="section-title">Five Routes to Market, One Business</h2>
+      <p class="section-subtitle" style="margin:16px auto 0;">Before replying we spent an hour with your website rather than sending a generic capability list. Here is what we think we&rsquo;re looking at &mdash; and where businesses shaped like this usually start to strain.</p>
+    </div>
+
+    <div class="chain fade-in fade-in-delay-1">
+      <div class="chain-link ours"><div class="chain-name">7 Branches</div><span class="chain-owner">Gauteng</span></div>
+      <div class="chain-link ours"><div class="chain-name">Online Store</div><span class="chain-owner">Shopify</span></div>
+      <div class="chain-link ours"><div class="chain-name">External Sales</div><span class="chain-owner">Trade</span></div>
+      <div class="chain-link ours"><div class="chain-name">Franchising</div><span class="chain-owner">Growth</span></div>
+      <div class="chain-link ours"><div class="chain-name">Nationwide Delivery</div><span class="chain-owner">Fulfilment</span></div>
+    </div>
+
+    <div class="chain-caption fade-in fade-in-delay-2">
+      <span><i class="swatch ours"></i> Five ways of selling that each tend to grow their own way of working</span>
+    </div>
+
+    <div class="support-cards" style="margin-top:56px;">
+      <div class="support-card fade-in fade-in-delay-1">
+        <div class="support-icon"><i data-lucide="package-search" style="width:22px;height:22px;"></i></div>
+        <h3>Seven branches, one stock question</h3>
+        <p>When a customer in Alberton asks for something that&rsquo;s out on the shelf, how long does it take to find out whether Diepkloof or Orange Farm has it? In most multi-branch retailers that answer costs a phone call, a WhatsApp and a wait &mdash; and the sale often doesn&rsquo;t survive the delay.</p>
+      </div>
+      <div class="support-card fade-in fade-in-delay-2">
+        <div class="support-icon"><i data-lucide="clipboard-list" style="width:22px;height:22px;"></i></div>
+        <h3>An external sales desk without a trade portal</h3>
+        <p>Your enquiry came from External Sales, but there&rsquo;s no trade or bulk ordering section on the site. That usually means wholesale orders arrive by phone, WhatsApp and email, get written down, then get typed into a system again &mdash; twice the work and one more place for a quantity to go wrong.</p>
+      </div>
+      <div class="support-card fade-in fade-in-delay-3">
+        <div class="support-icon"><i data-lucide="users" style="width:22px;height:22px;"></i></div>
+        <h3>The same customer, arriving three ways</h3>
+        <p>Someone who buys in Lenasia on Saturday, orders online on Tuesday and phones the sales desk next month is usually three separate records. Which makes it very hard to know who your best customers actually are, or to treat them like it.</p>
+      </div>
+      <div class="support-card fade-in fade-in-delay-4">
+        <div class="support-icon"><i data-lucide="git-fork" style="width:22px;height:22px;"></i></div>
+        <h3>Franchising only scales if it&rsquo;s repeatable</h3>
+        <p>You&rsquo;re taking franchise applications, which means the way a Rani&rsquo;s store runs has to become a documented, teachable system rather than something learned by standing next to someone. That&rsquo;s process work before it&rsquo;s software work, and it&rsquo;s the single highest-leverage thing on this page.</p>
+      </div>
+      <div class="support-card fade-in fade-in-delay-5">
+        <div class="support-icon"><i data-lucide="repeat" style="width:22px;height:22px;"></i></div>
+        <h3>Herbal products get finished</h3>
+        <p>Mixtures, teas, oils and salts run out on a fairly predictable cycle. If nothing reminds that customer at the right moment, the repeat purchase depends entirely on them remembering you &mdash; which is the most expensive way to earn revenue you&rsquo;ve already paid to acquire once.</p>
+      </div>
+      <div class="support-card fade-in fade-in-delay-5">
+        <div class="support-icon"><i data-lucide="bar-chart-3" style="width:22px;height:22px;"></i></div>
+        <h3>How long does the month take to close?</h3>
+        <p>Seven branches plus online plus trade usually means a consolidated view of sales arrives days late, assembled by hand. Decisions then get made on last month&rsquo;s numbers &mdash; or on instinct, which is fine until you&rsquo;re running twelve stores instead of seven.</p>
+      </div>
+    </div>
+
+    <div class="quote-note fade-in fade-in-delay-3" style="margin-top:40px;">
+      <strong>All of that is guesswork, and we want to be straight about it.</strong> Everything above came from your website and a search &mdash; not from inside your business. They&rsquo;re the patterns we see repeatedly in multi-branch retailers who also sell online and to trade, not findings about Rani&rsquo;s. Some will be wrong. You may have solved three of them already, and you almost certainly have two problems we haven&rsquo;t thought of, because we haven&rsquo;t stood behind the counter yet. That&rsquo;s the entire reason the first piece of real work is an audit rather than a proposal: we&rsquo;d rather replace these guesses with facts than sell you a solution to a problem you don&rsquo;t have.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ APPROACH ══ -->
+<section id="approach" class="section">
+  <div class="container">
+    <div class="approach-inner">
+      <div class="fade-in">
+        <div class="label" style="margin-bottom:12px;">How We Work</div>
+        <h2 class="section-title">Diagnose First.<br/>Build <span class="accent">Second.</span></h2>
+        <p class="section-subtitle">
+          Automating a process that isn&rsquo;t working properly just makes the wrong thing happen faster, and then hard-codes it into software that&rsquo;s expensive to unpick. So nothing gets built until we understand how the business actually runs today.
+        </p>
+        <p class="section-subtitle">
+          Every step below is a natural stopping point. You can take the audit and go no further and it will still have been worth doing &mdash; you&rsquo;d own the process maps and the roadmap either way, and you could hand them to anyone.
+        </p>
+      </div>
+      <div class="approach-visual fade-in fade-in-delay-1">
+        <div class="approach-phase">
+          <div class="approach-phase-num">1</div>
+          <div class="approach-phase-text">
+            <strong>Diagnostic Session</strong>
+            <span>Thirty minutes with you and whoever knows the day-to-day best &mdash; enough for us to understand the shape of the business and tell you honestly whether we can help or not</span>
+          </div>
+          <div class="approach-phase-days">Free</div>
+        </div>
+        <div class="approach-connector"></div>
+        <div class="approach-phase">
+          <div class="approach-phase-num">2</div>
+          <div class="approach-phase-text">
+            <strong>Operational Audit</strong>
+            <span>Time on site with the people doing the work &mdash; branch, sales desk, online, procurement &mdash; mapping the real process end to end, listing the systems in use and finding where the time and margin actually go</span>
+          </div>
+          <div class="approach-phase-days">On site</div>
+        </div>
+        <div class="approach-connector"></div>
+        <div class="approach-phase">
+          <div class="approach-phase-num">3</div>
+          <div class="approach-phase-text">
+            <strong>Findings &amp; Roadmap</strong>
+            <span>Everything we found, scored on effort against impact and sequenced so the work that pays for itself fastest comes first &mdash; presented to you in person, yours to keep whatever you decide next</span>
+          </div>
+          <div class="approach-phase-days">Documented</div>
+        </div>
+        <div class="approach-connector"></div>
+        <div class="approach-phase">
+          <div class="approach-phase-num">4</div>
+          <div class="approach-phase-text">
+            <strong>Build &amp; Integrate</strong>
+            <span>The agreed items built in your own accounts and alongside the live business, never on top of it, so trading carries on and there is always something to roll back to</span>
+          </div>
+          <div class="approach-phase-days">Phased</div>
+        </div>
+        <div class="approach-connector"></div>
+        <div class="approach-phase">
+          <div class="approach-phase-num">5</div>
+          <div class="approach-phase-text">
+            <strong>Train &amp; Hand Over</strong>
+            <span>Named people on your team trained until they can change things themselves, written documentation for everything built, and a support window while the team settles in</span>
+          </div>
+          <div class="approach-phase-days">Included</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ WHAT WE BUILD ══ -->
+<section id="build" class="section-sm">
+  <div class="container">
+    <div class="fade-in">
+      <div class="label" style="margin-bottom:12px;">Capability</div>
+      <h2 class="section-title">What We Actually Build</h2>
+      <p class="section-subtitle">The working stack. Which of it applies to Rani&rsquo;s is a question for after the audit, not before it.</p>
+    </div>
+
+    <div class="tech-pills fade-in fade-in-delay-1">
+      <div class="tech-pill"><div class="tech-pill-icon"><i data-lucide="scan-search" style="width:14px;height:14px;"></i></div>Business process mapping</div>
+      <div class="tech-pill"><div class="tech-pill-icon"><i data-lucide="clipboard-list" style="width:14px;height:14px;"></i></div>SOPs &amp; branch playbooks</div>
+      <div class="tech-pill"><div class="tech-pill-icon"><i data-lucide="layout-dashboard" style="width:14px;height:14px;"></i></div>ClickUp operating systems</div>
+      <div class="tech-pill"><div class="tech-pill-icon"><i data-lucide="git-branch" style="width:14px;height:14px;"></i></div>n8n, Make &amp; Zapier automation</div>
+      <div class="tech-pill"><div class="tech-pill-icon"><i data-lucide="shopping-cart" style="width:14px;height:14px;"></i></div>Shopify integration</div>
+      <div class="tech-pill"><div class="tech-pill-icon"><i data-lucide="columns-3" style="width:14px;height:14px;"></i></div>CRM &amp; pipeline automation</div>
+      <div class="tech-pill"><div class="tech-pill-icon"><i data-lucide="message-circle" style="width:14px;height:14px;"></i></div>WhatsApp &amp; email sequences</div>
+      <div class="tech-pill"><div class="tech-pill-icon"><i data-lucide="bot" style="width:14px;height:14px;"></i></div>AI agents &amp; chatbots</div>
+      <div class="tech-pill"><div class="tech-pill-icon"><i data-lucide="phone-call" style="width:14px;height:14px;"></i></div>AI voice agents</div>
+      <div class="tech-pill"><div class="tech-pill-icon"><i data-lucide="globe" style="width:14px;height:14px;"></i></div>Trade &amp; franchise portals</div>
+      <div class="tech-pill"><div class="tech-pill-icon"><i data-lucide="plug" style="width:14px;height:14px;"></i></div>API &amp; system integration</div>
+      <div class="tech-pill"><div class="tech-pill-icon"><i data-lucide="bar-chart-3" style="width:14px;height:14px;"></i></div>Live dashboards &amp; reporting</div>
+    </div>
+
+    <div class="tech-note fade-in fade-in-delay-2">
+      Everything is built in accounts that belong to Rani&rsquo;s, in Rani&rsquo;s name. There is no platform of ours in the middle, nothing you can&rsquo;t take with you, and no situation where leaving us means losing the system.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ OWNERSHIP ══ -->
+<section id="ownership" class="section">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;">
+      <div class="label" style="margin-bottom:12px;">How We Operate</div>
+      <h2 class="section-title">What You Always Own</h2>
+    </div>
+    <div class="ownership-cards">
+      <div class="ownership-card fade-in fade-in-delay-1">
+        <div class="ownership-icon"><i data-lucide="key-round" style="width:24px;height:24px;"></i></div>
+        <h3>Every account in Rani&rsquo;s name &mdash; billed to you, owned by you, never routed through us</h3>
+      </div>
+      <div class="ownership-card fade-in fade-in-delay-2">
+        <div class="ownership-icon"><i data-lucide="database" style="width:24px;height:24px;"></i></div>
+        <h3>Your customer and sales data stays yours &mdash; exportable in full, at any time, without asking</h3>
+      </div>
+      <div class="ownership-card fade-in fade-in-delay-3">
+        <div class="ownership-icon"><i data-lucide="file-text" style="width:24px;height:24px;"></i></div>
+        <h3>Everything documented in writing &mdash; so your team, or anyone after us, inherits notes and not a mystery</h3>
+      </div>
+    </div>
+
+    <div class="quote-note fade-in fade-in-delay-3" style="margin-top:40px;">
+      <strong>On cost, since you&rsquo;ll want to know.</strong> We&rsquo;ve deliberately not put figures in this document, because quoting before understanding the business is how projects end up mispriced for everyone. What we can tell you now is how it works: we bill for hours, every hour is logged against a named deliverable and itemised on your invoice, and scope is agreed in writing before anything starts. Software licences &mdash; ClickUp, CRM, WhatsApp, AI usage &mdash; are always quoted as their own separate line, never buried in our fee. We hold vendor partnerships, including with ClickUp, so we can supply some licences directly at partner pricing where that works out better for you. Real numbers come after the meeting, against a real scope.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ BEFORE WE MEET ══ -->
+<section id="prepare" class="section">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;">
+      <div class="label" style="margin-bottom:12px;">Before We Meet</div>
+      <h2 class="section-title">What to Prepare</h2>
+      <p class="section-subtitle" style="margin:16px auto 0;">You asked what you should have ready. Honestly? Nothing is mandatory &mdash; if you&rsquo;d rather just talk, we&rsquo;ll bring the questions. But if you want the first meeting to be worth more than an introduction, these six things make the difference.</p>
+    </div>
+
+    <div class="days-card fade-in fade-in-delay-1">
+      <div class="days-card-header">
+        <div class="days-card-title">Useful to have ready</div>
+        <span class="badge badge-outline">All optional</span>
+      </div>
+      <table class="days-table">
+        <thead>
+          <tr>
+            <th>What to Bring</th>
+            <th>Why It Helps</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>The right people, not just the senior ones</td>
+            <td>Someone who works a branch counter, someone from external sales, and whoever handles online orders. The people doing the work know where it breaks &mdash; management usually knows where it hurts, which is not always the same place</td>
+          </tr>
+          <tr>
+            <td>A list of the systems you currently use</td>
+            <td>Shopify, whatever handles accounting and stock, your point-of-sale, and every spreadsheet that quietly runs something important. The spreadsheets matter most &mdash; they&rsquo;re usually where a real process is hiding</td>
+          </tr>
+          <tr>
+            <td>Who does what, roughly</td>
+            <td>Not a formal org chart. Just who owns ordering, who owns stock, who answers the phone, who chases a late delivery &mdash; and which of those jobs currently sit with the same person</td>
+          </tr>
+          <tr>
+            <td>Last month&rsquo;s sales split by channel</td>
+            <td>Branches versus online versus trade, even approximately. It tells us where the money actually comes from, which is where the effort should go &mdash; and how long it took you to work that number out is itself useful to know</td>
+          </tr>
+          <tr>
+            <td>The three things that annoy you most</td>
+            <td>The recurring irritations &mdash; the report that takes half a day, the order that gets typed in twice, the customer question nobody can answer quickly. These are almost always where the return is</td>
+          </tr>
+          <tr>
+            <td>Anything already underway</td>
+            <td>If there&rsquo;s a project running, a system half-implemented, or something a previous supplier started and left, we need to know before we suggest anything that would collide with it</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="quote-note fade-in fade-in-delay-2" style="margin-top:24px;">
+      <strong>What we&rsquo;ll bring.</strong> Questions, mostly. We&rsquo;ll want to understand how an order travels from the moment a customer asks for something to the moment it&rsquo;s paid for and out the door &mdash; through a branch, through the website, and through the sales desk, because those three journeys are rarely the same. Expect us to ask more than we tell in that first meeting. If we spend the whole hour presenting to you, we&rsquo;ll have learned nothing worth charging you for later.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ FAQ ══ -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;">
+      <div class="label" style="margin-bottom:12px;">FAQ</div>
+      <h2 class="section-title">Common Questions</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item fade-in fade-in-delay-1">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What is this going to cost?
+          <span class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We haven&rsquo;t put figures in this document on purpose. Quoting a business we haven&rsquo;t seen inside means either padding the number to cover what we don&rsquo;t know, or lowballing it and coming back later for more &mdash; and both are bad ways to start. What we can commit to now is the structure: we bill hourly, every hour is logged against a named deliverable and itemised on the invoice, scope is fixed in writing before work starts, and software licences are always quoted separately rather than hidden inside a fee. After the meeting we&rsquo;ll put real numbers against a real scope, and you can take it or leave it with nothing owed.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-2">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Would we have to move off Shopify or replace our systems?
+          <span class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Almost certainly not. Our default is to make what you already have work properly together rather than replace it &mdash; ripping out a working store or accounting system is expensive, disruptive and usually unnecessary. Shopify integrates well with everything we build. If we ever did think something needed replacing we&rsquo;d have to show you the arithmetic first, and we&rsquo;d expect you to push back hard on it.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-2">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Will any of this disrupt trading?
+          <span class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            It shouldn&rsquo;t, because we don&rsquo;t build on top of a live system. New workflows are built alongside what&rsquo;s already running, tested with test data, and only switched over once they work &mdash; which means the old way is always still there to fall back on. Branch staff carry on exactly as they are until there&rsquo;s something better and they&rsquo;ve been trained on it.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-3">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How long does an audit take?
+          <span class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            For a business your shape, expect a few weeks rather than a few days &mdash; some of that is time on site across more than one branch, some is talking to the people who actually run the processes, and some is writing it up properly so the findings are usable rather than a conversation you have to remember. We&rsquo;ll give you a firm timeframe with the quote, once we know how many locations and systems are genuinely in scope.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-3">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What happens to our customer data?
+          <span class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            It stays yours, in your accounts, and we&rsquo;ll sign a confidentiality agreement before we see any of it. Anything we build is designed to work within POPIA &mdash; consent captured properly, marketing messages people can opt out of, and access limited to the staff who need it. If we find something in your current setup that wouldn&rsquo;t stand up to scrutiny, we&rsquo;ll tell you plainly rather than quietly build around it.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-4">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          We already have someone doing our IT. Does this replace them?
+          <span class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            No, and it usually shouldn&rsquo;t. IT support keeps the computers, network and email working &mdash; a different job to redesigning how orders move through a business. We work alongside whoever you have, and if they&rsquo;re good they&rsquo;ll be one of the most useful people in the audit, because they already know where the awkward parts are. We&rsquo;d rather have them in the room than around them.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-4">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What if we take the audit and decide not to go further?
+          <span class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Then that&rsquo;s a perfectly good outcome and you owe us nothing beyond the audit itself. You keep the process maps, the findings and the roadmap &mdash; they&rsquo;re yours, in editable form, and you can implement them in-house or hand them to another supplier entirely. We&rsquo;d rather deliver something genuinely useful and lose the build than hold the findings hostage to win it.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-4">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Are we too small, or too traditional, for this kind of thing?
+          <span class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            A business running seven branches, a national online store and a franchise programme is neither. And &ldquo;traditional&rdquo; is usually an advantage here rather than an obstacle &mdash; it normally means the process is well understood by the people running it and has simply never been written down. That&rsquo;s far easier to work with than a business that bought a lot of software and still can&rsquo;t explain how anything works.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ CTA ══ -->
+<section id="cta">
+  <div class="cta-bg"></div>
+  <div class="container cta-inner">
+    <div class="fade-in">
+      <div class="label" style="margin-bottom:16px;text-align:center;">Next Steps</div>
+      <h2 class="cta-headline">Let&rsquo;s Get in a Room</h2>
+      <p class="cta-sub">You asked about our availability &mdash; we&rsquo;re flexible, and happy to come to Blackwood Road rather than ask you to travel. We&rsquo;re based in Johannesburg, so it&rsquo;s a short drive and there&rsquo;s no charge for it, whether or not anything comes of the meeting. Send us two or three times that suit you and we&rsquo;ll work around them.</p>
+
+      <div class="slot-grid">
+        <!-- Natalie: swap these for specific dates once you've checked the diary -->
+        <div class="slot-card fade-in fade-in-delay-1">
+          <div class="slot-icon"><i data-lucide="map-pin" style="width:20px;height:20px;"></i></div>
+          <div class="slot-day">In Lenasia</div>
+          <div class="slot-time">We come to you</div>
+          <div class="slot-date">7 Blackwood Road, no charge</div>
+        </div>
+        <div class="slot-card fade-in fade-in-delay-2">
+          <div class="slot-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
+          <div class="slot-day">About an hour</div>
+          <div class="slot-time">Weekdays</div>
+          <div class="slot-date">Mornings suit us best</div>
+        </div>
+        <div class="slot-card fade-in fade-in-delay-3">
+          <div class="slot-icon"><i data-lucide="file-check" style="width:20px;height:20px;"></i></div>
+          <div class="slot-day">Then a written scope</div>
+          <div class="slot-time">Within a week</div>
+          <div class="slot-date">Real numbers, no obligation</div>
+        </div>
+      </div>
+
+      <div class="cta-buttons fade-in fade-in-delay-4">
+        <a href="mailto:rhadmin2@ranis.co.za?subject=Rani%27s%20Herbalist%20%E2%80%94%20Consulting%20Enquiry%20%7C%20Ruppell&amp;cc=natalie@ruppell.co.za" class="btn btn-primary">
+          <i data-lucide="mail" style="width:16px;height:16px;"></i>
+          Reply to Gadi
+        </a>
+        <a href="tel:+27635243149" class="btn btn-ghost">
+          <i data-lucide="phone" style="width:16px;height:16px;"></i>
+          +27 63 524 3149
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+
+      <div class="footer-brand-row">
+        <div>
+          <img src="https://ruppell.co.za/wp-content/uploads/2025/11/Untitled-design-10-e1762169365729.png" alt="Ruppell" style="height:32px;" />
+        </div>
+        <div class="footer-brand-sep"></div>
+        <div class="footer-brand-for">
+          <div class="footer-brand-for-label">Prepared for</div>
+          <!-- Rani's Herbalist wordmark — replace with logo artwork when supplied -->
+          <div class="partner-wordmark-sm">Rani&rsquo;s<span class="accent">&nbsp;Herbalist</span></div>
+        </div>
+      </div>
+
+      <div class="footer-tagline">Create. Elevate. Dominate.</div>
+      <div class="footer-contact">
+        <a href="mailto:natalie@ruppell.co.za">natalie@ruppell.co.za</a>
+        &nbsp;|&nbsp;
+        <a href="mailto:xander@ruppell.co.za">xander@ruppell.co.za</a>
+        <br />
+        <a href="tel:+27635243149">+27 63 524 3149</a>
+        &nbsp;|&nbsp;
+        <a href="https://www.ruppell.co.za">www.ruppell.co.za</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Ruppell ZA. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Lucide icons ──
+  lucide.createIcons();
+
+  // ── Intersection Observer for fade-in ──
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+  // ── FAQ accordion ──
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item.open').forEach((i) => i.classList.remove('open'));
+
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // ── Nav active link highlight ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((a) => {
+            a.style.color = a.getAttribute('href') === '#' + entry.target.id ? '#ffffff' : '';
+          });
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+
+  sections.forEach((s) => navObserver.observe(s));
+</script>
+</body>
+</html>
